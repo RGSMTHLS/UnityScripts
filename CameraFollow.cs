@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    //Set camera to Orthographic and adjust the size
     public Transform target;
     public float smoothing = 5f;
 
