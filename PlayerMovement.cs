@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        floorMask = LayerMask.GetMask("Floor");
+        floorMask = LayerMask.GetMask("HigherFloor");
         anim = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
 

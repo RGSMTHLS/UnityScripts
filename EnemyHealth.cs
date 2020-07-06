@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CapsuleCollider))]
 public class EnemyHealth : MonoBehaviour
 {
     public int startingHealth = 100;
@@ -39,7 +41,6 @@ public class EnemyHealth : MonoBehaviour
     {
         if (isDead)
             return;
-        //enemyAudio.Play();
         currentHealth -= amount;
 
         hitParticles.transform.position = hitPoint;
@@ -48,6 +49,7 @@ public class EnemyHealth : MonoBehaviour
         {
             Death();
         }
+        
     }
 
     void Death()
@@ -55,6 +57,7 @@ public class EnemyHealth : MonoBehaviour
         isDead = true;
 
         capsuleCollider.isTrigger = true;
+        StartSinking();
         //anim.SetTrigger("Dead");
         //enemyAudio.clip = deathClip;
         //enemyAudio.Play();
@@ -65,6 +68,8 @@ public class EnemyHealth : MonoBehaviour
         GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<Rigidbody>().isKinematic = true;
         isSinking = true;
-        Destroy(gameObject, 2f);
+        //Destroy(gameObject, 2f);
+        Debug.Log("Gameobject is " + gameObject);
+        Destroy(gameObject);
     }
 }
