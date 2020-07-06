@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Animator))]
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 6f;
@@ -14,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        floorMask = LayerMask.GetMask("HigherFloor");
+        floorMask = LayerMask.GetMask("Floor");
         anim = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
 

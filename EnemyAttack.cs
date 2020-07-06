@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Remember to set a gameobjects tag to "Player" so this script knows what to chase
+//Give the Enemy an additional collider that is set to "Is Trigger" to be able to attack
 public class EnemyAttack : MonoBehaviour
 {
     public float timeBetweenAttacks = 0.5f;

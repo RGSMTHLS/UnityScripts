@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
+[RequireComponent(typeof(ParticleSystem))]
 public class EnemyHealth : MonoBehaviour
 {
     public int startingHealth = 100;
@@ -24,7 +25,7 @@ public class EnemyHealth : MonoBehaviour
     {
         //anim = GetComponent<Animator>();
         //enemyAudio = GetComponent<AudioSource>();
-        hitParticles = GetComponentInChildren<ParticleSystem>();
+        hitParticles = GetComponent<ParticleSystem>();
         capsuleCollider = GetComponent<CapsuleCollider>();
 
         currentHealth = startingHealth;
@@ -43,7 +44,8 @@ public class EnemyHealth : MonoBehaviour
             return;
         currentHealth -= amount;
 
-        hitParticles.transform.position = hitPoint;
+        //hitParticles.transform.position = hitPoint;
+        hitParticles.Stop();
         hitParticles.Play();
         if(currentHealth <= 0)
         {
@@ -69,7 +71,6 @@ public class EnemyHealth : MonoBehaviour
         GetComponent<Rigidbody>().isKinematic = true;
         isSinking = true;
         //Destroy(gameObject, 2f);
-        Debug.Log("Gameobject is " + gameObject);
         Destroy(gameObject);
     }
 }
